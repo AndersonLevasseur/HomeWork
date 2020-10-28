@@ -1,0 +1,87 @@
+/* 
+* Discuss objects and strings using browser
+*/
+
+let x = "string";
+var x = "string2";//similar, don't worry about the difference for now
+
+let x = "string2";//breaks because "let" defines the starting point
+
+x.length;
+x.length();// doesn't work
+x.charAt(3);
+
+/* Make our own Functions */
+let countLetters = function(input) {
+	return input.length;
+}
+countLetters(x);
+
+/* Make our own Objects */
+let myCat = {
+	paws: 4,
+	furColor: "red",
+	makeNoise: function() {
+		return "meow";
+	}
+}
+
+/* Objects come with a few things built in */
+myCat.toString();
+
+/* Javascript has some built in objects like Arrays */
+myFavoriteThings = ["raindrops", "whiskers", "shells"];
+/* They come with some built in stuff too */
+let writeFunc = function(instr) {
+	console.log(instr);
+}
+myFavoriteThings.forEach(writeFunc)
+/* The forEach function is attached to arrays and lets you run 
+* a function for every thing in the array
+*/ 
+
+/* Let's write a basic node program */
+//this is a comment
+/*
+This is a multi
+line comment
+*/
+fs = require('fs')
+fs.readFile('./jobs.csv', 'utf8', function (err,data) {
+  if (err) {
+    return console.log(err);
+  }
+  console.log(data);
+});
+
+/*
+* If the file name is spelled wrong what happens? 
+* Discuss require and what 'fs' is
+* 	https://nodejs.org/api/fs.html
+* Discuss UTF8 file encoding
+* 	https://en.wikipedia.org/wiki/UTF-8
+* Ignore error handling for now
+*/
+
+
+//I want to know everyone's salary, how do we break this CSV down 
+// to get at that data?
+// Google: node csv
+//	https://stackabuse.com/reading-and-writing-csv-files-with-node-js/
+
+//Discuss NPM and package managers
+npm install csv-parser
+
+//https://www.npmjs.com/package/csv-parser
+
+/*We now have a node-modules folder with a ton of crap, we actually got a bunch of libraries
+code builds on code on code, javascript is especially crazy about this
+we also have a package-lock.json file which is used for a bunch of stuff you don't care about for now
+*/
+
+// Now we can add
+const csv = require('csv-parser');
+
+// and we can read from the file by adding the parser which uses what are called "events"
+// note also that the functions look a little different, this is just shorthand
+
